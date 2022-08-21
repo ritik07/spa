@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { Row, Col, Spin, Table, Pagination } from 'antd'
-// import Overview from '../../component/dashboard/Overview'
 import SideMenu from '../../component/dashboard/SideMenu'
 import axios from 'axios';
-import { DahboardColumn } from '../../component/antd/columns/DashboardColumns';
+import Overview from '../../component/dashboard/Overview';
 
 const Dashboard = () => {
 
@@ -13,7 +12,7 @@ const Dashboard = () => {
 	const [total, setTotal] = useState(1)
 	const [filterData, setFilterData] = useState(false)
 	const [priceRange, setPriceRange] = useState(undefined)
-	const [discount, setDiscount] = useState(false)
+	const [discount, setDiscount] = useState(undefined)
 
 	useEffect(() => {
 		fetchData()
@@ -34,6 +33,7 @@ const Dashboard = () => {
 	}
 
 	const pagination = (page) => {
+		resetFilters()
 		setCurrent(page)
 	}
 
@@ -45,34 +45,24 @@ const Dashboard = () => {
 		))
 	}
 
+	const resetFilters = () => {
+		setDiscount(undefined)
+		setPriceRange(undefined)
+		setFilterData(responseData)
+	}
+
 	return (
 		filterData ?
 			<Row gutter={[20, 20]}>
 				<Col lg={6}>
 					<SideMenu filterData={filterData}
 						setPriceRange={(value) => setPriceRange(value)} priceRange={priceRange}
-						setDiscount={(value) => setDiscount(value)} discount={discount} onFilterApply={onFilterApply} />
+						setDiscount={(value) => setDiscount(value)} discount={discount} onFilterApply={onFilterApply}
+						resetFilters={resetFilters} />
 				</Col>
 
 				<Col lg={18}>
-					<div className='cs-fw-700 cs-fs-24 cs-bm-10'>
-						Overview
-					</div>
-					{filterData.length ?
-						<div>
-							<Table dataSource={filterData}
-								columns={DahboardColumn}
-								rowKey="id"
-								pagination={false}
-								scroll={{ y: 'calc(100vh - 285px)', x: 'calc(700px + 50%)' }} />
-
-							<Pagination className="cs-tm-10 cs-bm-10" current={current}
-								pageSize={10} total={total} onChange={pagination}
-								showSizeChanger={false} />
-						</div> :
-						<div className='cs-fs-20 cs-fw-600 cs-vt-center cs-hrz-center cs-dis-flex cs-vh60'>
-							No data found on selected fitlers
-						</div>}
+					<Overview filterData={filterData} current={current} pagination={pagination} total={total} resetFilters={resetFilters} />
 				</Col>
 
 			</Row>

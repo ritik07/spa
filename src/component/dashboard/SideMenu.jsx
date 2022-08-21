@@ -2,7 +2,7 @@ import React from 'react'
 import DashboardGraph from './DashboardGraph'
 import { Row, Col, Card, Slider, Divider, Select, Button } from 'antd'
 
-const SideMenu = ({ filterData, setPriceRange, priceRange, setDiscount, discount, onFilterApply }) => {
+const SideMenu = ({ filterData, setPriceRange, priceRange, setDiscount, discount, onFilterApply, resetFilters }) => {
 
 	return (
 		<div>
@@ -11,7 +11,7 @@ const SideMenu = ({ filterData, setPriceRange, priceRange, setDiscount, discount
 			</div>
 
 			<Card className='cs-br-10'>
-				<DashboardGraph filterData={filterData} />
+				<DashboardGraph filterData={filterData} resetFilters={resetFilters} />
 			</Card>
 
 			<Divider />
@@ -35,7 +35,7 @@ const SideMenu = ({ filterData, setPriceRange, priceRange, setDiscount, discount
 				<Button className='cs-rm-10' onClick={onFilterApply}>
 					Apply
 				</Button>
-				<Button>
+				<Button onClick={resetFilters}>
 					Reset
 				</Button>
 			</div>
@@ -43,15 +43,13 @@ const SideMenu = ({ filterData, setPriceRange, priceRange, setDiscount, discount
 				<div className='cs-label cs-bm-5'>
 					Category
 				</div>
-				<Select className='cs-w-100' mode='multiple' placeholder="Cateogry">
-					{responseData.filter((item) => item.category).map((data, index) => {
-						let unique = onlyUnique
-						console.log("unique", unique)
-						return (
-							<Select.Option value={data.category} key={index}>
-								{data.category}
-							</Select.Option>
-						)
+				<Select className='cs-w-100' placeholder="Cateogry">
+					{filterData.filter((item, fitlerIndex, arr) => item.category && arr.indexOf(cate) == index).map((data, index) => {
+					return (
+					<Select.Option value={data.category} key={index}>
+						{data.category}
+					</Select.Option>
+					)
 					})}
 				</Select>
 			</Card> */}

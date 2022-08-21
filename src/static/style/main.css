@@ -41,27 +41,40 @@
     color: #f44336;
 }
 
-.cs-vh100{
+.cs-vh100 {
     height: 100vh;
 }
 
-.cs-clr-fff{
+.cs-clr-fff {
     color: #fff;
 }
 
-.cs-br-10{
+.cs-br-10 {
     border-radius: 10px !important;
 }
 
-.cs-w-100{
+.cs-w-100 {
     width: 100%;
 }
 
-.cs-label{
+.cs-label {
     color: rgba(71, 71, 71, 0.686);
     font-weight: 600;
 }
 
-.cs-vh60{
+.cs-vh60 {
     height: 60vh;
+}
+
+.cs-pos-abs {
+    position: absolute;
+    top: 50%;
+}
+
+.cs-font-12{
+    font-size: 12px;
+}
+
+.cs-cursor-pointer{
+    cursor: pointer;
 }
