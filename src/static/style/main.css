@@ -1,0 +1,46 @@
+@import url('./font.css');
+@import url('./margin.css');
+
+.cs-layout {
+    background: #fff !important;
+}
+
+.cs-container {
+    margin: 20px;
+}
+
+.cs-dashboard-table-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.cs-dis-flex {
+    display: flex;
+}
+
+.cs-hrz-center {
+    justify-content: center;
+    justify-items: center;
+}
+
+.cs-vt-center {
+    align-content: center;
+    align-items: center;
+}
+
+.cs-clr-success {
+    color: #4caf50;
+}
+
+.cs-clr-secondary {
+    color: #ff9800;
+}
+
+.cs-clr-danger {
+    color: #f44336;
+}
+
+.cs-vh100{
+    height: 100vh;
+}
