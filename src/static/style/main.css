@@ -71,10 +71,30 @@
     top: 50%;
 }
 
-.cs-font-12{
+.cs-font-12 {
     font-size: 12px;
 }
 
-.cs-cursor-pointer{
+.cs-cursor-pointer {
     cursor: pointer;
+}
+
+.cs-best-products .ant-progress-outer .ant-progress-inner .ant-progress-bg {
+    background-color: #70b5c0 !important;
+}
+
+.cs-low-stock .ant-progress-outer .ant-progress-inner .ant-progress-bg {
+    background-color: #fd5c62 !important;
+}
+
+.cs-best-deals .ant-progress-outer .ant-progress-inner .ant-progress-bg {
+    background-color: #775ea5 !important;
+}
+
+.cs-clr-purple {
+    color: #775ea5;
+}
+
+.cs-clr-discount{
+    color: #70b5c0;
 }

@@ -1,6 +1,6 @@
 import React from 'react'
 import DashboardGraph from './DashboardGraph'
-import { Row, Col, Card, Slider, Divider, Select, Button } from 'antd'
+import { Card, Slider, Divider, Button } from 'antd'
 
 const SideMenu = ({ filterData, setPriceRange, priceRange, setDiscount, discount, onFilterApply, resetFilters }) => {
 
@@ -39,20 +39,6 @@ const SideMenu = ({ filterData, setPriceRange, priceRange, setDiscount, discount
 					Reset
 				</Button>
 			</div>
-			{/* <Card size='small' className='cs-br-10 cs-tm-10'>
-				<div className='cs-label cs-bm-5'>
-					Category
-				</div>
-				<Select className='cs-w-100' placeholder="Cateogry">
-					{filterData.filter((item, fitlerIndex, arr) => item.category && arr.indexOf(cate) == index).map((data, index) => {
-					return (
-					<Select.Option value={data.category} key={index}>
-						{data.category}
-					</Select.Option>
-					)
-					})}
-				</Select>
-			</Card> */}
 		</div>
 	)
 }

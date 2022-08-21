@@ -13,10 +13,29 @@ const Dashboard = () => {
 	const [filterData, setFilterData] = useState(false)
 	const [priceRange, setPriceRange] = useState(undefined)
 	const [discount, setDiscount] = useState(undefined)
+	const [completeData, setCompleteData] = useState(false)
+	const [showCompleteAnalytics, setShowCompleteAnalytics] = useState(false)
+
+	useEffect(() => {
+		//below function is just for getiing complete data independent of pagination, 
+		// for the purpose of data visualization (it's in bonus) you can turn it off using toggle button through dashboard
+		if (showCompleteAnalytics) {
+			fetchCompleteData()
+		}
+	}, [showCompleteAnalytics])
 
 	useEffect(() => {
 		fetchData()
 	}, [current])
+
+	const fetchCompleteData = async () => {
+		try {
+			const response = await axios.get(`https://dummyjson.com/products?skip=${0}&limit=100`)
+			setCompleteData(response.data.products)
+		} catch (err) {
+			setApiError(err)
+		}
+	}
 
 	const fetchData = async () => {
 		setResponseData(false)
@@ -62,7 +81,9 @@ const Dashboard = () => {
 				</Col>
 
 				<Col lg={18}>
-					<Overview filterData={filterData} current={current} pagination={pagination} total={total} resetFilters={resetFilters} />
+					<Overview completeData={completeData} filterData={filterData} current={current}
+						pagination={pagination} total={total} resetFilters={resetFilters}
+						showCompleteAnalytics={showCompleteAnalytics} setShowCompleteAnalytics={(value) => setShowCompleteAnalytics(value)} />
 				</Col>
 
 			</Row>
