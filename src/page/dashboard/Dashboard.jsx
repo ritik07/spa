@@ -25,6 +25,7 @@ const Dashboard = () => {
 	}, [showCompleteAnalytics])
 
 	useEffect(() => {
+		//function to fetch main table data
 		fetchData()
 	}, [current])
 
@@ -56,6 +57,7 @@ const Dashboard = () => {
 		setCurrent(page)
 	}
 
+	// bonus filter the products and graph as per the filter selected by user
 	const onFilterApply = () => {
 		setFilterData(responseData?.filter(response =>
 			(priceRange ? (response.price >= priceRange[0] && response.price <= priceRange[1]) : true)

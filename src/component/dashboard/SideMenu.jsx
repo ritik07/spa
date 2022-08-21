@@ -15,7 +15,8 @@ const SideMenu = ({ filterData, setPriceRange, priceRange, setDiscount, discount
 			</Card>
 
 			<Divider />
-
+			
+			{/* below part is in bonus */}
 			<Card size='small' className='cs-br-10'>
 				<div className='cs-label'>
 					Price range
