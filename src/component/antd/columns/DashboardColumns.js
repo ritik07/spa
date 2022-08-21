@@ -6,6 +6,7 @@ export const DahboardColumn = [
 		className: 'cs-fw-500',
 		dataIndex: 'title',
 		key: 'title',
+		width: 300,
 		render: (record, data, index) => {
 			return (<div>
 				<div className='cs-dis-flex'>
@@ -24,41 +25,48 @@ export const DahboardColumn = [
 		className: 'cs-fw-500',
 		dataIndex: 'description',
 		key: 'description',
+		width: 200
 	},
 	{
 		title: 'Category',
 		className: 'cs-fw-500',
 		dataIndex: 'category',
 		key: 'category',
+		width: 200,
 	},
 	{
 		title: 'Brand',
 		className: 'cs-fw-500',
 		dataIndex: 'brand',
 		key: 'brand',
+		width: 200,
 	},
 	{
 		title: 'Price',
 		dataIndex: 'price',
 		key: 'price',
+		width: 120,
 		render: (record) => <div className='cs-fs-18 cs-clr-secondary cs-fw-700'>{"$" + record}</div>
 	},
 	{
 		title: 'Discount Percentage',
 		dataIndex: 'discountPercentage',
 		key: 'discountPercentage',
+		width: 120,
 		render: (record) => <div className='cs-fs-18 cs-clr-success cs-fw-700'>{record + "%"}</div>
 	},
 	{
 		title: 'Stock',
 		dataIndex: 'stock',
 		key: 'stock',
+		width: 120,
 		render: (record) => <div className={'cs-fs-18 cs-clr-secondary cs-fw-700'}>{record}</div>
 	},
 	{
 		title: 'rating',
 		dataIndex: 'rating',
 		key: 'rating',
+		width: 120,
 		render: (record) => <div className={'cs-fs-18 cs-clr-secondary cs-fw-700'}>{record}</div>
 	},
 ];

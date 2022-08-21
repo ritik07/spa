@@ -8,7 +8,7 @@ const LayoutWrapper = () => {
 	return (
 		<>
 			<Layout className="cs-layout">
-				{/* <Header>
+				<Header>
 					<div className="logo" />
 					<Row>
 						<Col span={4}>
@@ -17,7 +17,7 @@ const LayoutWrapper = () => {
 							</div>
 						</Col>
 					</Row>
-				</Header> */}
+				</Header>
 				<Content>
 					<div className="cs-container">
 						<Outlet />

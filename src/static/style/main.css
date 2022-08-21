@@ -44,3 +44,24 @@
 .cs-vh100{
     height: 100vh;
 }
+
+.cs-clr-fff{
+    color: #fff;
+}
+
+.cs-br-10{
+    border-radius: 10px !important;
+}
+
+.cs-w-100{
+    width: 100%;
+}
+
+.cs-label{
+    color: rgba(71, 71, 71, 0.686);
+    font-weight: 600;
+}
+
+.cs-vh60{
+    height: 60vh;
+}
