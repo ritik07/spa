@@ -8,12 +8,12 @@ const LayoutWrapper = () => {
 	return (
 		<>
 			<Layout className="cs-layout">
-				<Header>
+				<Header className="fix-header zi-5">
 					<div className="logo" />
 					<Row>
-						<Col span={4}>
-							<div className="cs-fw-800 cs-clr-fff cs-fs-20">
-								Datazeit
+						<Col span={24}>
+							<div className="cs-fw-800 cs-clr-fff cs-fs-16 cs-dis-flex cs-hrz-centeru">
+								Doggiesthan
 							</div>
 						</Col>
 					</Row>
