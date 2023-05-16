@@ -1,7 +1,7 @@
 import React from 'react'
 import { BASE_URL_ASSET } from '../../constant'
 
-const Card = ({ name, image, shortDecription }) => {
+const ProductCard = ({ name, image, shortDecription, mrp, price }) => {
   return (
     <div className='cs-card-wrapper'>
       {/* Image */}
@@ -20,8 +20,19 @@ const Card = ({ name, image, shortDecription }) => {
         {shortDecription}
       </div>
 
+      <div className='cs-dis-flex cs-fw-700'>
+        <div>
+          <span>Rs:</span>
+          <span className='cs-mrp'> {mrp} </span>
+        </div>
+
+        <div className='cs-lm-5'>
+          {price}
+        </div>
+      </div>
+
     </div>
   )
 }
 
-export default Card
+export default ProductCard

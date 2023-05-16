@@ -1,13 +1,39 @@
 import { Button, Col, Row } from "antd";
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
-import { BASE_URL } from "../../constant";
+import { BASE_URL, BASE_URL_ASSET } from "../../constant";
 
 const Product = () => {
   const navigate = useNavigate();
+  const { state } = useLocation();
+  console.log("data", state);
+  const {
+    name,
+    image,
+    price,
+    mrp,
+    short_description,
+    description,
+    product_id,
+    product_image,
+  } = state;
+  const redirectToLogin = () => {
+    if (
+      !JSON.parse(localStorage.getItem("user_id")) ||
+      !JSON.parse(localStorage.getItem("user_session"))
+    ) {
+      navigate("/");
+      return true;
+    } else {
+      return false;
+    }
+  };
+
   const handleOnBuy = () => {
-    navigate("/cart");
+    if (!redirectToLogin()) {
+      navigate("/cart");
+    }
     // navigate(
     //   `/home/category/${window.location.pathname.split("/")[3]}/${
     //     window.location.pathname.split("/")[4]
@@ -17,39 +43,34 @@ const Product = () => {
     // );
   };
   const handleOnAddToCart = async () => {
-    const payload = {
-      product_id: 4315,
-      price: 50,
-      user_id: 33,
-      session_id: JSON.parse(localStorage.getItem("user_session")),
-      quantity: 1,
-    };
-    let result = await axios.post(BASE_URL + "cart/addtocart", payload);
-    console.log("result", result);
+    if (!redirectToLogin()) {
+      const payload = {
+        product_id: product_id,
+        price: price,
+        user_id: JSON.parse(localStorage.getItem("user_id")),
+        session_id: JSON.parse(localStorage.getItem("user_session")),
+        quantity: 1,
+      };
+      let result = await axios.post(BASE_URL + "cart/addtocart", payload);
+      console.log("result", result);
+    }
   };
 
   return (
     <div>
       <Row>
         <Col span={12}>
-          <img
-            className="cs-w-max"
-            src="https://cdn.shopify.com/s/files/1/0100/6128/3392/products/Manisha-2021-09-07T172432.780.jpg?v=1642805323"
-          ></img>
+          <img className="cs-w-max p-5" src={BASE_URL_ASSET + "/" + product_image} />
         </Col>
         <Col span={12}>
-          <div className="cs-product-name cs-notation">Product name</div>
+          <div className="cs-product-name cs-notation">{name}</div>
 
+          <div>{description}</div>
           <div>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book. It has survived not
-            only five centuries, but also the leap into electronic typesetting,
+            <h2 className="cs-mrp">Rs {mrp}</h2>
           </div>
-
           <div>
-            <h2>Rs 499</h2>
+            <h2>Rs {price}</h2>
           </div>
         </Col>
       </Row>

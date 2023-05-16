@@ -12,8 +12,7 @@ const Dashboard = () => {
 
 	const getCompleteUserSession = async () => {
 		let user_id = JSON.parse(localStorage.getItem("user_id"))
-		console.log("user_id", user_id);
-		let response = await axios.get(BASE_URL + `usersession/getcompletesession/${user_id}`,)
+		let response = await axios.get(BASE_URL + `user/usersession/getcompletesession/${user_id}`,)
 		localStorage.setItem("user_session", JSON.stringify(response.data.data.session_data.session_id))
 		console.log("response", response);
 	}
